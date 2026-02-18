@@ -120,6 +120,9 @@
         '<span class="card__badge"><i class="' + categoryIcon + '" style="margin-right:4px;font-size:0.8em;"></i>' + categoryName + '</span>' +
         '<h4 class="card__title">' + product.name + '</h4>' +
         '<p class="card__text">' + product.description + '</p>' +
+        '<button class="btn btn--secondary btn--sm quote-btn" style="margin-top:var(--space-md);width:100%;" ' +
+        'data-product="' + product.name.replace(/"/g, '&quot;') + '" data-category="' + categoryName.replace(/"/g, '&quot;') + '" data-icon="' + categoryIcon + '">' +
+        '<i class="fas fa-file-invoice" style="margin-right:4px;"></i> Request Quote</button>' +
         '</div></div>';
     }).join('');
 
@@ -161,6 +164,95 @@
       '<h3>Unable to load products</h3>' +
       '<p>Please contact us at <a href="mailto:info@maishamedicals.com">info@maishamedicals.com</a> for our product catalog.</p>' +
       '</div>';
+  }
+
+  // ============================================================
+  // QUOTE REQUEST MODAL
+  // ============================================================
+
+  var quoteModal = document.getElementById('quote-modal');
+  var quoteForm = document.getElementById('quote-form');
+  var quoteSuccess = document.getElementById('quote-success');
+  var quoteSubmit = document.getElementById('quote-submit');
+  var quoteProductName = document.getElementById('quote-product-name');
+  var quoteProductCategory = document.getElementById('quote-product-category');
+  var quoteProductField = document.getElementById('quote-product-field');
+  var quoteProductIcon = quoteModal ? quoteModal.querySelector('.quote-product-info__icon i') : null;
+
+  // Open quote modal when clicking "Request Quote" button
+  if (productsGrid) {
+    productsGrid.addEventListener('click', function (e) {
+      var btn = e.target.closest('.quote-btn');
+      if (!btn) return;
+      e.preventDefault();
+      openQuoteModal(btn.dataset.product, btn.dataset.category, btn.dataset.icon);
+    });
+  }
+
+  function openQuoteModal(name, category, icon) {
+    if (!quoteModal) return;
+    quoteProductName.textContent = name;
+    quoteProductCategory.innerHTML = '<i class="' + icon + '" style="margin-right:4px;"></i> ' + category;
+    quoteProductField.value = name;
+    if (quoteProductIcon) quoteProductIcon.className = icon;
+    quoteForm.style.display = '';
+    quoteSuccess.classList.remove('show');
+    quoteModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.closeQuoteModal = function () {
+    if (!quoteModal) return;
+    quoteModal.style.display = 'none';
+    document.body.style.overflow = '';
+    quoteForm.reset();
+    quoteForm.style.display = '';
+    quoteSuccess.classList.remove('show');
+    if (quoteSubmit) {
+      quoteSubmit.disabled = false;
+      quoteSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
+    }
+  };
+
+  // Close handlers
+  if (quoteModal) {
+    document.getElementById('quote-close').addEventListener('click', window.closeQuoteModal);
+    quoteModal.querySelector('.quote-modal__overlay').addEventListener('click', window.closeQuoteModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && quoteModal.style.display !== 'none') {
+        window.closeQuoteModal();
+      }
+    });
+  }
+
+  // Form submission
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      quoteSubmit.disabled = true;
+      quoteSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      var formData = new FormData(quoteForm);
+
+      fetch(quoteForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            quoteForm.style.display = 'none';
+            quoteSuccess.classList.add('show');
+          } else {
+            throw new Error('Submission failed');
+          }
+        })
+        .catch(function () {
+          alert('Something went wrong. Please try again or contact info@maishamedicals.com directly.');
+          quoteSubmit.disabled = false;
+          quoteSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
+        });
+    });
   }
 
   loadProducts();

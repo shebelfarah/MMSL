@@ -101,7 +101,7 @@
         <i class="fas fa-inbox"></i>
         <h3>No Current Openings</h3>
         <p style="margin-bottom: 1.5rem;">We don't have any open positions right now, but we're always interested in hearing from talented professionals.</p>
-        <p>Send your CV to <a href="mailto:info@maishamedicals.com" style="color: var(--color-primary); font-weight: 600;">info@maishamedicals.com</a> and we'll keep it on file for future opportunities.</p>
+        <p>Submit your application below and we'll keep it on file for future opportunities.</p>
       </div>
 
       <noscript>
@@ -109,6 +109,68 @@
           <p>Please enable JavaScript to view our job listings, or email info@maishamedicals.com for current openings.</p>
         </div>
       </noscript>
+    </div>
+  </section>
+
+  <!-- ===== APPLICATION FORM ===== -->
+  <section class="section section--alt" id="apply-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Apply Online</h2>
+        <p>Submit your application below. We'll review it and get back to you as soon as possible.</p>
+      </div>
+
+      <div class="application-form-wrap fade-in">
+        <!-- Success message -->
+        <div id="apply-success" class="form-success">
+          <i class="fas fa-check-circle" style="display:block;"></i>
+          <h3>Application Submitted!</h3>
+          <p style="color:var(--color-mid-gray);margin-top:var(--space-md);">Thank you for your interest. Our team will review your application and contact you soon.</p>
+        </div>
+
+        <!-- Application form — Formspree -->
+        <form id="apply-form" action="https://formspree.io/f/mjgeoazy" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_subject" value="New Job Application — Maisha Medical Supplies">
+          <input type="text" name="_gotcha" style="display:none;">
+
+          <div class="form-group">
+            <label for="apply-name">Full Name *</label>
+            <input type="text" id="apply-name" name="name" class="form-control" placeholder="Your full name" required>
+          </div>
+
+          <div class="apply-form-row">
+            <div class="form-group">
+              <label for="apply-email">Email Address *</label>
+              <input type="email" id="apply-email" name="email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="apply-phone">Phone Number *</label>
+              <input type="tel" id="apply-phone" name="phone" class="form-control" placeholder="+256 700 000 000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-position">Position Applying For</label>
+            <select id="apply-position" name="position" class="form-control">
+              <option value="General Application">General Application</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-resume">Upload Resume/CV * <small style="color:var(--color-mid-gray);">(PDF, DOC, DOCX — max 10MB)</small></label>
+            <input type="file" id="apply-resume" name="resume" class="form-control form-control--file" accept=".pdf,.doc,.docx" required>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-message">Cover Letter / Additional Information</label>
+            <textarea id="apply-message" name="message" class="form-control" rows="4" placeholder="Tell us why you'd be a great fit..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--lg" id="apply-submit">
+            <i class="fas fa-paper-plane"></i> Submit Application
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Maisha Medical Supplies Limited</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/favicon-16x16.png">
+  <link rel="manifest" href="assets/images/logo/site.webmanifest">
+  <link rel="shortcut icon" href="assets/images/logo/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ===== LOGIN GATE ===== -->
+  <div id="login-gate" class="admin-login">
+    <div class="admin-login__card">
+      <div class="admin-login__header">
+        <i class="fas fa-lock"></i>
+        <h2>Admin Access</h2>
+        <p>Enter the admin password to manage products</p>
+      </div>
+      <form id="login-form">
+        <div class="form-group">
+          <input type="password" id="admin-password" class="form-control" placeholder="Enter password" autocomplete="off" required>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+        <p id="login-error" class="admin-login__error" style="display:none;">Incorrect password. Please try again.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== ADMIN PANEL (hidden until login) ===== -->
+  <div id="admin-panel" style="display:none;">
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-header__left">
+          <a href="index.html" class="logo">
+            Maisha <span>Medical Supplies</span>
+          </a>
+          <span class="admin-header__badge">Admin</span>
+        </div>
+        <div class="admin-header__actions">
+          <button id="btn-save-json" class="btn btn--primary btn--sm">
+            <i class="fas fa-download"></i> Download JSON
+          </button>
+          <button id="btn-view-site" class="btn btn--outline-dark btn--sm" onclick="window.open('products.html','_blank')">
+            <i class="fas fa-external-link-alt"></i> View Site
+          </button>
+          <button id="btn-logout" class="btn btn--sm" style="background:none;color:var(--color-mid-gray);border:1px solid var(--color-light-gray);">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Admin Tabs -->
+    <div class="admin-tabs">
+      <div class="container">
+        <button class="admin-tab active" data-tab="products"><i class="fas fa-box"></i> Products</button>
+        <button class="admin-tab" data-tab="categories"><i class="fas fa-tags"></i> Categories</button>
+      </div>
+    </div>
+
+    <!-- Products Tab -->
+    <div id="tab-products" class="admin-content">
+      <div class="container">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar__left">
+            <h2>Products</h2>
+            <span id="product-count" class="admin-count"></span>
+          </div>
+          <div class="admin-toolbar__right">
+            <select id="filter-category" class="form-control" style="width:auto;padding:8px 36px 8px 12px;">
+              <option value="all">All Categories</option>
+            </select>
+            <button id="btn-add-product" class="btn btn--secondary btn--sm">
+              <i class="fas fa-plus"></i> Add Product
+            </button>
+          </div>
+        </div>
+
+        <div id="products-table" class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th style="width:80px;">Featured</th>
+                <th style="width:70px;">Order</th>
+                <th style="width:120px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories Tab -->
+    <div id="tab-categories" class="admin-content" style="display:none;">
+      <div class="container">
+        <div class="admin-toolbar">
+          <div class="admin-toolbar__left">
+            <h2>Categories</h2>
+            <span id="category-count" class="admin-count"></span>
+          </div>
+        </div>
+        <div id="categories-list" class="admin-categories"></div>
+      </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="product-modal" class="admin-modal" style="display:none;">
+      <div class="admin-modal__overlay"></div>
+      <div class="admin-modal__content">
+        <div class="admin-modal__header">
+          <h3 id="modal-title">Edit Product</h3>
+          <button class="admin-modal__close" id="modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="product-form" class="admin-modal__body">
+          <input type="hidden" id="edit-product-id">
+
+          <div class="form-group">
+            <label for="edit-name">Product Name</label>
+            <input type="text" id="edit-name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-description">Description</label>
+            <textarea id="edit-description" class="form-control" rows="3" required></textarea>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group" style="flex:1;">
+              <label for="edit-category">Category</label>
+              <select id="edit-category" class="form-control" required></select>
+            </div>
+            <div class="form-group" style="width:100px;">
+              <label for="edit-order">Order</label>
+              <input type="number" id="edit-order" class="form-control" min="1" value="1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-image">Image URL <small style="color:var(--color-mid-gray);">(relative path, e.g. assets/images/products/photo.jpg)</small></label>
+            <input type="text" id="edit-image" class="form-control" placeholder="assets/images/products/">
+            <div id="image-preview" class="admin-image-preview" style="display:none;">
+              <img id="image-preview-img" src="" alt="Preview">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="admin-checkbox">
+              <input type="checkbox" id="edit-featured">
+              <span>Featured product</span>
+            </label>
+          </div>
+
+          <div class="admin-modal__footer">
+            <button type="button" class="btn btn--sm" id="modal-cancel" style="background:none;color:var(--color-mid-gray);border:1px solid var(--color-light-gray);">Cancel</button>
+            <button type="submit" class="btn btn--primary btn--sm">
+              <i class="fas fa-save"></i> Save Product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Category Modal -->
+    <div id="category-modal" class="admin-modal" style="display:none;">
+      <div class="admin-modal__overlay"></div>
+      <div class="admin-modal__content">
+        <div class="admin-modal__header">
+          <h3>Edit Category</h3>
+          <button class="admin-modal__close" id="cat-modal-close"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="category-form" class="admin-modal__body">
+          <input type="hidden" id="edit-cat-id">
+
+          <div class="form-group">
+            <label for="edit-cat-name">Category Name</label>
+            <input type="text" id="edit-cat-name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-cat-description">Description</label>
+            <textarea id="edit-cat-description" class="form-control" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-cat-icon">Icon Class <small style="color:var(--color-mid-gray);">(Font Awesome, e.g. fas fa-heartbeat)</small></label>
+            <input type="text" id="edit-cat-icon" class="form-control" placeholder="fas fa-box">
+            <div id="icon-preview" class="admin-icon-preview" style="margin-top:8px;">
+              <i id="icon-preview-i" class=""></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-cat-image">Image URL</label>
+            <input type="text" id="edit-cat-image" class="form-control" placeholder="assets/images/products/">
+          </div>
+
+          <div class="admin-modal__footer">
+            <button type="button" class="btn btn--sm" id="cat-modal-cancel" style="background:none;color:var(--color-mid-gray);border:1px solid var(--color-light-gray);">Cancel</button>
+            <button type="submit" class="btn btn--primary btn--sm">
+              <i class="fas fa-save"></i> Save Category
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

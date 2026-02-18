@@ -209,6 +209,68 @@
     </div>
   </footer>
 
+  <!-- ===== QUOTE REQUEST MODAL ===== -->
+  <div id="quote-modal" class="quote-modal" style="display:none;">
+    <div class="quote-modal__overlay"></div>
+    <div class="quote-modal__content">
+      <div class="quote-modal__header">
+        <h3><i class="fas fa-file-invoice" style="margin-right:8px;color:var(--color-secondary);"></i> Request a Quote</h3>
+        <button class="admin-modal__close" id="quote-close"><i class="fas fa-times"></i></button>
+      </div>
+
+      <!-- Success -->
+      <div id="quote-success" class="form-success" style="margin:var(--space-xl);">
+        <i class="fas fa-check-circle" style="display:block;"></i>
+        <h3>Quote Request Sent!</h3>
+        <p style="color:var(--color-mid-gray);margin-top:var(--space-md);">Thank you for your inquiry. Our sales team will contact you shortly with pricing and availability.</p>
+        <button class="btn btn--primary btn--sm" style="margin-top:var(--space-lg);" onclick="closeQuoteModal()">Close</button>
+      </div>
+
+      <!-- Form -->
+      <form id="quote-form" action="https://formspree.io/f/mzdavjwk" method="POST" class="quote-modal__body">
+        <input type="hidden" name="_subject" value="New Product Quote Request — Maisha Medical Supplies">
+        <input type="text" name="_gotcha" style="display:none;">
+
+        <div class="quote-product-info" id="quote-product-info">
+          <div class="quote-product-info__icon"><i class="fas fa-box"></i></div>
+          <div>
+            <strong id="quote-product-name">Product Name</strong>
+            <span id="quote-product-category" class="admin-cat-badge" style="margin-top:4px;"></span>
+          </div>
+        </div>
+        <input type="hidden" id="quote-product-field" name="product">
+
+        <div class="form-group">
+          <label for="quote-name">Full Name *</label>
+          <input type="text" id="quote-name" name="name" class="form-control" placeholder="Your full name" required>
+        </div>
+
+        <div class="apply-form-row">
+          <div class="form-group">
+            <label for="quote-email">Email Address *</label>
+            <input type="email" id="quote-email" name="email" class="form-control" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="quote-phone">Phone Number *</label>
+            <input type="tel" id="quote-phone" name="phone" class="form-control" placeholder="+256 700 000 000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quote-quantity">Quantity / Details</label>
+          <textarea id="quote-quantity" name="details" class="form-control" rows="3" placeholder="How many units do you need? Any specific requirements?"></textarea>
+        </div>
+
+        <div class="quote-modal__footer">
+          <button type="button" class="btn btn--sm" onclick="closeQuoteModal()" style="background:none;color:var(--color-mid-gray);border:1px solid var(--color-light-gray);">Cancel</button>
+          <button type="submit" class="btn btn--primary btn--sm" id="quote-submit">
+            <i class="fas fa-paper-plane"></i> Send Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <button class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
   <script src="assets/js/main.js"></script>
