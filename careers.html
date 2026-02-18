@@ -129,7 +129,7 @@
         </div>
 
         <!-- Application form — Formspree -->
-        <form id="apply-form" action="https://formspree.io/f/mjgeoazy" method="POST" enctype="multipart/form-data">
+        <form id="apply-form" action="https://formspree.io/f/mjgeoazy" method="POST">
           <input type="hidden" name="_subject" value="New Job Application — Maisha Medical Supplies">
           <input type="text" name="_gotcha" style="display:none;">
 
@@ -157,8 +157,8 @@
           </div>
 
           <div class="form-group">
-            <label for="apply-resume">Upload Resume/CV * <small style="color:var(--color-mid-gray);">(PDF, DOC, DOCX — max 10MB)</small></label>
-            <input type="file" id="apply-resume" name="resume" class="form-control form-control--file" accept=".pdf,.doc,.docx" required>
+            <label for="apply-resume">Resume/CV Link * <small style="color:var(--color-mid-gray);">(Google Drive, Dropbox, or any shared link)</small></label>
+            <input type="url" id="apply-resume" name="resume_link" class="form-control" placeholder="https://drive.google.com/file/d/..." required>
           </div>
 
           <div class="form-group">
