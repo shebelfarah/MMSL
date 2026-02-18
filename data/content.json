@@ -13,26 +13,10 @@
     }
   },
   "stats": [
-    {
-      "value": "500+",
-      "label": "Products Available"
-    },
-    {
-      "value": "12+",
-      "label": "Years of Experience"
-    },
-    {
-      "value": "ISO 9001:2015",
-      "label": "Certified"
-    },
-    {
-      "value": "East Africa",
-      "label": "Region Covered"
-    },
-    {
-      "value": "test",
-      "label": "regulates"
-    }
+    { "value": "500+", "label": "Products Available" },
+    { "value": "12+", "label": "Years of Experience" },
+    { "value": "ISO 9001:2015", "label": "Certified" },
+    { "value": "East Africa", "label": "Region Covered" }
   ],
   "about": {
     "mission": "To supply high quality pharmaceutical and medical products that exceed customer expectations through a quality management system satisfying the international standard ISO 9001:2015.",

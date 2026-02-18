@@ -71,6 +71,41 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeElements.forEach(el => observer.observe(el));
   }
 
+  // --- Load Homepage Content from content.json ---
+  if (currentPage === 'index.html' || currentPage === '' || currentPage === '/') {
+    fetch('data/content.json?t=' + Date.now())
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        // Hero section
+        var headline = document.getElementById('hero-headline');
+        var subtitle = document.getElementById('hero-subtitle');
+        var ctaPrimary = document.getElementById('hero-cta-primary');
+        var ctaSecondary = document.getElementById('hero-cta-secondary');
+
+        if (headline && data.hero) headline.textContent = data.hero.headline;
+        if (subtitle && data.hero) subtitle.textContent = data.hero.subheadline;
+        if (ctaPrimary && data.hero && data.hero.ctaPrimary) {
+          ctaPrimary.textContent = data.hero.ctaPrimary.text;
+          ctaPrimary.href = data.hero.ctaPrimary.url;
+        }
+        if (ctaSecondary && data.hero && data.hero.ctaSecondary) {
+          ctaSecondary.textContent = data.hero.ctaSecondary.text;
+          ctaSecondary.href = data.hero.ctaSecondary.url;
+        }
+
+        // Stats bar
+        var statsBar = document.getElementById('stats-bar');
+        if (statsBar && data.stats && data.stats.length > 0) {
+          statsBar.innerHTML = data.stats.map(function (stat) {
+            return '<div class="stat"><div class="stat__value">' + stat.value + '</div><div class="stat__label">' + stat.label + '</div></div>';
+          }).join('');
+        }
+      })
+      .catch(function (err) {
+        console.error('Error loading content:', err);
+      });
+  }
+
   // --- Back to Top Button ---
   const backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
