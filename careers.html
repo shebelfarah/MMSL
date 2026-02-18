@@ -150,20 +150,103 @@
           </div>
 
           <div class="form-group">
-            <label for="apply-position">Position Applying For</label>
-            <select id="apply-position" name="position" class="form-control">
+            <label for="apply-position">Position Applying For *</label>
+            <select id="apply-position" name="position" class="form-control" required>
               <option value="General Application">General Application</option>
             </select>
           </div>
 
+          <!-- Education -->
+          <h4 class="form-section-title"><i class="fas fa-graduation-cap"></i> Education</h4>
+
           <div class="form-group">
-            <label for="apply-resume">Resume/CV Link * <small style="color:var(--color-mid-gray);">(Google Drive, Dropbox, or any shared link)</small></label>
-            <input type="url" id="apply-resume" name="resume_link" class="form-control" placeholder="https://drive.google.com/file/d/..." required>
+            <label for="apply-degree">Highest Qualification *</label>
+            <select id="apply-degree" name="highest_qualification" class="form-control" required>
+              <option value="" disabled selected>Select your qualification</option>
+              <option value="Certificate">Certificate</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Bachelor's Degree">Bachelor's Degree</option>
+              <option value="Master's Degree">Master's Degree</option>
+              <option value="Doctorate / PhD">Doctorate / PhD</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="apply-form-row">
+            <div class="form-group">
+              <label for="apply-field">Field of Study *</label>
+              <input type="text" id="apply-field" name="field_of_study" class="form-control" placeholder="e.g. Pharmacy, Nursing, Business" required>
+            </div>
+            <div class="form-group">
+              <label for="apply-institution">Institution *</label>
+              <input type="text" id="apply-institution" name="institution" class="form-control" placeholder="University / College name" required>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="apply-message">Cover Letter / Additional Information</label>
-            <textarea id="apply-message" name="message" class="form-control" rows="4" placeholder="Tell us why you'd be a great fit..."></textarea>
+            <label for="apply-grad-year">Year of Graduation *</label>
+            <input type="number" id="apply-grad-year" name="graduation_year" class="form-control" placeholder="e.g. 2022" min="1970" max="2030" required>
+          </div>
+
+          <!-- Work Experience -->
+          <h4 class="form-section-title"><i class="fas fa-briefcase"></i> Work Experience</h4>
+
+          <div class="apply-form-row">
+            <div class="form-group">
+              <label for="apply-years-exp">Years of Experience *</label>
+              <select id="apply-years-exp" name="years_of_experience" class="form-control" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Less than 1 year">Less than 1 year</option>
+                <option value="1-2 years">1-2 years</option>
+                <option value="3-5 years">3-5 years</option>
+                <option value="5-10 years">5-10 years</option>
+                <option value="10+ years">10+ years</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apply-current-title">Current / Most Recent Job Title *</label>
+              <input type="text" id="apply-current-title" name="current_job_title" class="form-control" placeholder="e.g. Medical Sales Representative" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-current-employer">Current / Most Recent Employer</label>
+            <input type="text" id="apply-current-employer" name="current_employer" class="form-control" placeholder="Company name">
+          </div>
+
+          <div class="form-group">
+            <label for="apply-experience-summary">Work Experience Summary *</label>
+            <textarea id="apply-experience-summary" name="experience_summary" class="form-control" rows="4" placeholder="Briefly describe your relevant work experience, key responsibilities, and achievements..." required></textarea>
+          </div>
+
+          <!-- Skills & Additional Info -->
+          <h4 class="form-section-title"><i class="fas fa-star"></i> Skills & Additional Information</h4>
+
+          <div class="form-group">
+            <label for="apply-skills">Key Skills *</label>
+            <textarea id="apply-skills" name="key_skills" class="form-control" rows="3" placeholder="e.g. Medical equipment sales, Customer relationship management, Team leadership, Fluent in English and Swahili..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-message">Why do you want to join Maisha Medical Supplies?</label>
+            <textarea id="apply-message" name="cover_letter" class="form-control" rows="4" placeholder="Tell us why you'd be a great fit and what motivates you to apply..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-referral">How did you hear about this position?</label>
+            <select id="apply-referral" name="referral_source" class="form-control">
+              <option value="" disabled selected>Select</option>
+              <option value="Company Website">Company Website</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Job Board">Job Board</option>
+              <option value="Employee Referral">Employee Referral</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="apply-available">Earliest Available Start Date *</label>
+            <input type="date" id="apply-available" name="available_start_date" class="form-control" required>
           </div>
 
           <button type="submit" class="btn btn--primary btn--lg" id="apply-submit">
