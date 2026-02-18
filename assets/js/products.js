@@ -1,11 +1,9 @@
 /* ============================================================
    MMSL — Products Page
-   Fetches data/products.json and renders product cards with filtering
+   Fetches data/products.json and renders premium product catalog
    ============================================================ */
 
 (function () {
-  // Update this to your raw GitHub URL after deploying:
-  // const DATA_URL = 'https://raw.githubusercontent.com/shebelfarah/MMSL/main/data/products.json';
   const DATA_URL = 'data/products.json';
 
   const filtersContainer = document.getElementById('product-filters');
@@ -37,84 +35,132 @@
   function renderFilters() {
     if (!filtersContainer) return;
 
-    // "All" button already exists in HTML, add category buttons
-    allCategories.forEach(cat => {
-      const btn = document.createElement('button');
+    // Update "All" button with count
+    const allBtn = filtersContainer.querySelector('[data-category="all"]');
+    if (allBtn) {
+      allBtn.innerHTML = 'All Products <span class="filter-count">' + allProducts.length + '</span>';
+      allBtn.addEventListener('click', function () {
+        activeCategory = 'all';
+        updateActiveFilter();
+        renderProducts();
+      });
+    }
+
+    // Add category buttons with counts
+    allCategories.forEach(function (cat) {
+      var count = allProducts.filter(function (p) { return p.categoryId === cat.id; }).length;
+      var btn = document.createElement('button');
       btn.className = 'filter-btn';
       btn.dataset.category = cat.id;
-      btn.textContent = cat.name;
-      btn.addEventListener('click', () => {
+      btn.innerHTML = '<i class="' + cat.icon + '" style="margin-right:6px;font-size:0.85em;"></i>' +
+        cat.name + ' <span class="filter-count">' + count + '</span>';
+      btn.addEventListener('click', function () {
         activeCategory = cat.id;
         updateActiveFilter();
         renderProducts();
       });
       filtersContainer.appendChild(btn);
     });
-
-    // Attach click to "All" button
-    const allBtn = filtersContainer.querySelector('[data-category="all"]');
-    if (allBtn) {
-      allBtn.addEventListener('click', () => {
-        activeCategory = 'all';
-        updateActiveFilter();
-        renderProducts();
-      });
-    }
   }
 
   function updateActiveFilter() {
-    filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
+    filtersContainer.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.category === activeCategory);
     });
   }
 
   function renderProducts() {
-    const filtered = activeCategory === 'all'
+    var filtered = activeCategory === 'all'
       ? allProducts
-      : allProducts.filter(p => p.categoryId === activeCategory);
+      : allProducts.filter(function (p) { return p.categoryId === activeCategory; });
 
     if (filtered.length === 0) {
-      productsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-mid-gray);">
-          <i class="fas fa-box-open" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-          <p>No products found in this category.</p>
-        </div>
-      `;
+      productsGrid.innerHTML =
+        '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--color-mid-gray);">' +
+        '<i class="fas fa-box-open" style="font-size:2rem;margin-bottom:1rem;display:block;"></i>' +
+        '<p>No products found in this category.</p></div>';
       return;
     }
 
-    productsGrid.innerHTML = filtered.map(product => {
-      const category = allCategories.find(c => c.id === product.categoryId);
-      const categoryName = category ? category.name : '';
-      const categoryIcon = category ? category.icon : 'fas fa-box';
+    var html = '';
 
-      const imageHtml = product.image
-        ? `<img class="card__image" src="${product.image}" alt="${product.name}" loading="lazy">`
-        : `<div class="card__image" style="display: flex; align-items: center; justify-content: center; background: var(--color-off-white);">
-             <i class="${categoryIcon}" style="font-size: 3rem; color: var(--color-primary); opacity: 0.3;"></i>
-           </div>`;
+    // If showing a specific category, show category banner
+    if (activeCategory !== 'all') {
+      var cat = allCategories.find(function (c) { return c.id === activeCategory; });
+      if (cat) {
+        html += renderCategoryBanner(cat, filtered.length);
+      }
+    }
 
-      return `
-        <div class="card product-card fade-in visible">
-          ${imageHtml}
-          <div class="card__body">
-            <span class="card__badge">${categoryName}</span>
-            <h4 class="card__title">${product.name}</h4>
-            <p class="card__text">${product.description}</p>
-          </div>
-        </div>
-      `;
+    // Render products count
+    if (activeCategory === 'all') {
+      html += '<div class="products-count" style="grid-column:1/-1;">Showing <strong>' +
+        filtered.length + '</strong> products across <strong>' +
+        allCategories.length + '</strong> categories</div>';
+    }
+
+    // Render product cards
+    html += filtered.map(function (product) {
+      var category = allCategories.find(function (c) { return c.id === product.categoryId; });
+      var categoryName = category ? category.name : '';
+      var categoryIcon = category ? category.icon : 'fas fa-box';
+
+      var imageHtml = product.image
+        ? '<img class="card__image" src="' + product.image + '" alt="' + product.name + '" loading="lazy">'
+        : '<div class="card__image-placeholder"><i class="' + categoryIcon + '"></i></div>';
+
+      var featuredHtml = product.featured
+        ? '<span class="featured-badge"><i class="fas fa-star" style="margin-right:3px;"></i>Featured</span>'
+        : '';
+
+      return '<div class="card product-card fade-in visible">' +
+        featuredHtml +
+        imageHtml +
+        '<div class="card__body">' +
+        '<span class="card__badge"><i class="' + categoryIcon + '" style="margin-right:4px;font-size:0.8em;"></i>' + categoryName + '</span>' +
+        '<h4 class="card__title">' + product.name + '</h4>' +
+        '<p class="card__text">' + product.description + '</p>' +
+        '</div></div>';
     }).join('');
+
+    productsGrid.innerHTML = html;
+  }
+
+  function renderCategoryBanner(category, productCount) {
+    var imageHtml = category.image
+      ? '<div class="category-banner__image"><img src="' + category.image + '" alt="' + category.name + '" loading="lazy"></div>'
+      : '';
+
+    return '<div class="category-banner fade-in visible" style="grid-column:1/-1;">' +
+      '<div class="category-banner__info">' +
+      '<h3><i class="' + category.icon + '" style="margin-right:10px;"></i>' + category.name + '</h3>' +
+      '<p>' + category.description + '</p>' +
+      '<div class="category-banner__stats">' +
+      '<div class="category-banner__stat">' +
+      '<span class="category-banner__stat-value">' + productCount + '</span>' +
+      '<span class="category-banner__stat-label">Products</span>' +
+      '</div>' +
+      '<div class="category-banner__stat">' +
+      '<span class="category-banner__stat-value"><i class="fas fa-check-circle"></i></span>' +
+      '<span class="category-banner__stat-label">ISO Certified</span>' +
+      '</div>' +
+      '<div class="category-banner__stat">' +
+      '<span class="category-banner__stat-value"><i class="fas fa-shipping-fast"></i></span>' +
+      '<span class="category-banner__stat-label">Fast Delivery</span>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      imageHtml +
+      '</div>';
   }
 
   function renderFallback() {
-    productsGrid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-mid-gray);">
-        <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
-        <h3>Unable to load products</h3>
-        <p>Please contact us at <a href="mailto:info@maishamedicals.com">info@maishamedicals.com</a> for our product catalog.</p>
-      </div>
-    `;
+    productsGrid.innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--color-mid-gray);">' +
+      '<i class="fas fa-exclamation-circle" style="font-size:2rem;margin-bottom:1rem;display:block;"></i>' +
+      '<h3>Unable to load products</h3>' +
+      '<p>Please contact us at <a href="mailto:info@maishamedicals.com">info@maishamedicals.com</a> for our product catalog.</p>' +
+      '</div>';
   }
 
   loadProducts();

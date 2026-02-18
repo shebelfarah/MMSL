@@ -2,114 +2,737 @@
   "lastUpdated": "2026-02-18T10:00:00Z",
   "categories": [
     {
-      "id": "pharmaceuticals",
-      "name": "Pharmaceuticals",
-      "description": "High-quality pharmaceutical products for healthcare facilities across East Africa.",
-      "icon": "fas fa-pills"
+      "id": "emergency",
+      "name": "Emergency & Resuscitation",
+      "description": "Life-saving emergency equipment including resuscitators, laryngoscopes, oxygen delivery systems, and suction units.",
+      "icon": "fas fa-heartbeat",
+      "image": "assets/images/products/emergency.jpg"
     },
     {
-      "id": "sundries",
-      "name": "Medical Sundries",
-      "description": "Essential medical sundries and disposable supplies for daily clinical use.",
-      "icon": "fas fa-first-aid"
-    },
-    {
-      "id": "consumables",
-      "name": "Medical Consumables",
-      "description": "Reliable medical consumables including catheters, tubes, and disinfectants.",
-      "icon": "fas fa-syringe"
+      "id": "diagnostic",
+      "name": "Diagnostic & Monitoring",
+      "description": "Precision diagnostic instruments and patient monitoring systems for accurate clinical assessments.",
+      "icon": "fas fa-stethoscope",
+      "image": "assets/images/products/stethoscope.jpg"
     },
     {
       "id": "furniture",
-      "name": "Medical Furniture",
-      "description": "Durable medical furniture and equipment for hospitals and clinics.",
-      "icon": "fas fa-bed"
+      "name": "Hospital Furniture & Beds",
+      "description": "Durable hospital beds, ward furniture, medical trolleys, and examination tables for healthcare facilities.",
+      "icon": "fas fa-bed",
+      "image": "assets/images/products/hospital-bed.jpg"
+    },
+    {
+      "id": "surgical",
+      "name": "Surgical & Sterilization",
+      "description": "Autoclaves, sterilizers, hospital holloware, and operating theatre equipment for surgical excellence.",
+      "icon": "fas fa-procedures",
+      "image": "assets/images/products/surgical.jpg"
+    },
+    {
+      "id": "infant",
+      "name": "Infant & Neonatal Care",
+      "description": "Specialized neonatal equipment including incubators, radiant warmers, phototherapy units, and infant monitoring.",
+      "icon": "fas fa-baby",
+      "image": "assets/images/products/incubator.jpg"
+    },
+    {
+      "id": "disposables",
+      "name": "Disposables & Consumables",
+      "description": "Essential disposable medical supplies — gloves, syringes, dressings, sutures, and hospital linen.",
+      "icon": "fas fa-syringe",
+      "image": "assets/images/products/syringe.jpg"
     },
     {
       "id": "laboratory",
       "name": "Laboratory Equipment",
-      "description": "Laboratory equipment and consumables for diagnostic and research facilities.",
-      "icon": "fas fa-microscope"
+      "description": "Laboratory instruments, plasticware, cold chain equipment, and analytical devices for research and diagnostics.",
+      "icon": "fas fa-microscope",
+      "image": "assets/images/products/microscope.jpg"
     },
     {
-      "id": "protective",
-      "name": "Protective Equipment",
-      "description": "Personal protective equipment to keep healthcare workers safe.",
-      "icon": "fas fa-shield-alt"
+      "id": "specialty",
+      "name": "Specialty Equipment",
+      "description": "Wheelchairs, dental equipment, gynecological products, O.T. tables, and patient transport systems.",
+      "icon": "fas fa-wheelchair",
+      "image": "assets/images/products/wheelchair.jpg"
     }
   ],
   "products": [
     {
-      "id": "prod-001",
-      "categoryId": "pharmaceuticals",
-      "name": "Pharmaceutical Supplies",
-      "description": "Wide range of pharmaceutical products sourced from certified manufacturers.",
+      "id": "em-001",
+      "categoryId": "emergency",
+      "name": "Silicone Resuscitators",
+      "description": "High-quality silicone artificial resuscitators available in adult, child, and infant sizes. Autoclavable and durable for repeated use.",
       "image": "",
       "featured": true,
       "order": 1
     },
     {
-      "id": "prod-002",
-      "categoryId": "sundries",
-      "name": "Medical Sundries",
-      "description": "Bandages, dressings, gloves, and other essential medical sundries.",
+      "id": "em-002",
+      "categoryId": "emergency",
+      "name": "Black Rubber Resuscitators",
+      "description": "Reliable black rubber resuscitators for adult, child, and infant resuscitation. Cost-effective emergency respiratory support.",
       "image": "",
-      "featured": true,
+      "featured": false,
       "order": 2
     },
     {
-      "id": "prod-003",
-      "categoryId": "consumables",
-      "name": "Catheters & Tubes",
-      "description": "Medical-grade catheters and tubes for various clinical applications.",
+      "id": "em-003",
+      "categoryId": "emergency",
+      "name": "Laryngoscope Sets",
+      "description": "Complete laryngoscope sets with fiber optic illumination. Available in adult, child, and infant configurations with multiple blade sizes.",
       "image": "",
       "featured": true,
       "order": 3
     },
     {
-      "id": "prod-004",
-      "categoryId": "consumables",
-      "name": "Disinfectants",
-      "description": "Hospital-grade disinfectants and sterilization solutions.",
+      "id": "em-004",
+      "categoryId": "emergency",
+      "name": "Laryngoscope Spares",
+      "description": "Replacement handles, blades (Macintosh & Miller), and bulbs for laryngoscope maintenance and repair.",
       "image": "",
       "featured": false,
       "order": 4
     },
     {
-      "id": "prod-005",
+      "id": "em-005",
+      "categoryId": "emergency",
+      "name": "Oxygen Cylinders & Accessories",
+      "description": "Medical-grade oxygen cylinders in various sizes with regulators, flow meters, and humidifier bottles.",
+      "image": "assets/images/products/oxygen-mask.jpg",
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": "em-006",
+      "categoryId": "emergency",
+      "name": "Suction Units — High Pressure",
+      "description": "High-pressure electric suction units for effective airway clearance. Mobile and wall-mounted configurations available.",
+      "image": "assets/images/products/suction-unit.jpg",
+      "featured": true,
+      "order": 6
+    },
+    {
+      "id": "em-007",
+      "categoryId": "emergency",
+      "name": "Portable & Foot-Operated Suction",
+      "description": "Hand-held, foot-operated, and AC/DC portable suction units for emergency and field use. Includes all accessories.",
+      "image": "",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "em-008",
+      "categoryId": "emergency",
+      "name": "Airways & Face Masks",
+      "description": "Guedel airways in all sizes, resuscitator face masks, corrugated tubes, and oxygen delivery masks.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "di-001",
+      "categoryId": "diagnostic",
+      "name": "Stethoscopes",
+      "description": "Professional-grade stethoscopes including dual-head, single-head, and specialty models for cardiology and pediatrics.",
+      "image": "assets/images/products/stethoscope.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "di-002",
+      "categoryId": "diagnostic",
+      "name": "Digital Thermometers",
+      "description": "Accurate digital and infrared thermometers for fast, non-contact temperature measurement in clinical settings.",
+      "image": "assets/images/products/thermometer.jpg",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "di-003",
+      "categoryId": "diagnostic",
+      "name": "Blood Pressure Monitors",
+      "description": "Sphygmomanometers — aneroid, digital, and mercury types. Wall-mounted and portable configurations for all clinical needs.",
+      "image": "assets/images/products/blood-pressure.jpg",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "di-004",
+      "categoryId": "diagnostic",
+      "name": "Patient Monitors",
+      "description": "Multi-parameter patient monitors tracking vital signs including SpO2, ECG, NIBP, temperature, and respiratory rate.",
+      "image": "assets/images/products/patient-monitor.jpg",
+      "featured": true,
+      "order": 4
+    },
+    {
+      "id": "di-005",
+      "categoryId": "diagnostic",
+      "name": "ECG Machines",
+      "description": "Single-channel and multi-channel electrocardiograph machines for cardiac diagnostic assessments.",
+      "image": "",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "id": "di-006",
+      "categoryId": "diagnostic",
+      "name": "Ultrasound Scanners",
+      "description": "Portable and console ultrasound machines for obstetric, abdominal, and general diagnostic imaging.",
+      "image": "",
+      "featured": true,
+      "order": 6
+    },
+    {
+      "id": "di-007",
+      "categoryId": "diagnostic",
+      "name": "Diagnostic Sets",
+      "description": "Ophthalmoscope and otoscope combination sets with LED illumination for comprehensive ENT and eye examinations.",
+      "image": "",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "di-008",
+      "categoryId": "diagnostic",
+      "name": "Weighing Scales",
+      "description": "Station/platform scales, spring balances, digital bathroom scales, and beam-type height-weight scales for clinics.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "di-009",
+      "categoryId": "diagnostic",
+      "name": "Tongue Depressors",
+      "description": "Disposable wooden and stainless steel reusable tongue depressors for oral examinations.",
+      "image": "",
+      "featured": false,
+      "order": 9
+    },
+    {
+      "id": "fu-001",
       "categoryId": "furniture",
-      "name": "Hospital Beds & Furniture",
-      "description": "Durable hospital beds, examination tables, and medical furniture.",
+      "name": "Fowler's Hospital Beds",
+      "description": "Adjustable Fowler's beds with backrest elevation, side rails, and castors. Manual and semi-automatic models.",
+      "image": "assets/images/products/hospital-bed.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "fu-002",
+      "categoryId": "furniture",
+      "name": "ICU & Traction Beds",
+      "description": "Multi-function ICU beds with Trendelenburg positions and orthopedic traction beds with frame attachments.",
+      "image": "",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "fu-003",
+      "categoryId": "furniture",
+      "name": "Baby Cots & Child Cots",
+      "description": "Pediatric hospital cots with adjustable height, transparent panels, and safety side rails for infant and child care.",
+      "image": "",
+      "featured": false,
+      "order": 3
+    },
+    {
+      "id": "fu-004",
+      "categoryId": "furniture",
+      "name": "Examination Tables",
+      "description": "Two-section examination tables with adjustable backrest, stirrups, and paper roll holder. Cushioned upholstery.",
+      "image": "",
+      "featured": true,
+      "order": 4
+    },
+    {
+      "id": "fu-005",
+      "categoryId": "furniture",
+      "name": "Delivery Tables",
+      "description": "Obstetric delivery tables with adjustable leg supports, Trendelenburg tilt, and stainless steel trays.",
+      "image": "",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "id": "fu-006",
+      "categoryId": "furniture",
+      "name": "Medical Trolleys",
+      "description": "Mayo trolleys, dressing trolleys, instrument trolleys, BP apparatus trolleys, and drug/medicine trolleys in stainless steel.",
+      "image": "",
+      "featured": true,
+      "order": 6
+    },
+    {
+      "id": "fu-007",
+      "categoryId": "furniture",
+      "name": "IV Stands & Drip Stands",
+      "description": "Adjustable height IV stands with 2 or 4 hooks, weighted base with castors for stable mobility.",
+      "image": "assets/images/products/iv-stand.jpg",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "fu-008",
+      "categoryId": "furniture",
+      "name": "Bedside Lockers & Tables",
+      "description": "Bedside lockers with drawer and cabinet, overbed tables with tilt-top, and bedside tables for patient comfort.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "fu-009",
+      "categoryId": "furniture",
+      "name": "Patient Screens & Curtains",
+      "description": "Three and four-fold patient privacy screens with washable curtains for ward and examination areas.",
+      "image": "",
+      "featured": false,
+      "order": 9
+    },
+    {
+      "id": "fu-010",
+      "categoryId": "furniture",
+      "name": "Hospital Mattresses",
+      "description": "Medical-grade mattresses including foam, waterproof, and anti-bedsore pressure relief mattresses.",
+      "image": "",
+      "featured": false,
+      "order": 10
+    },
+    {
+      "id": "fu-011",
+      "categoryId": "furniture",
+      "name": "Revolving Stools & Blood Stands",
+      "description": "Height-adjustable revolving stools for doctors and blood collection stands (single and double) for phlebotomy.",
+      "image": "",
+      "featured": false,
+      "order": 11
+    },
+    {
+      "id": "su-001",
+      "categoryId": "surgical",
+      "name": "Autoclaves — Table Top",
+      "description": "Compact table-top autoclaves for clinics and small facilities. Fully automatic with digital controls and safety locks.",
+      "image": "",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "su-002",
+      "categoryId": "surgical",
+      "name": "Pressure Steam Sterilizers",
+      "description": "Large-capacity vertical and horizontal pressure steam sterilizers for hospitals. Multiple drum capacity.",
+      "image": "assets/images/products/surgical.jpg",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "su-003",
+      "categoryId": "surgical",
+      "name": "Hot Air Ovens",
+      "description": "Electric hot air ovens for dry heat sterilization of glassware, instruments, and powders. Digital temperature control.",
+      "image": "",
+      "featured": false,
+      "order": 3
+    },
+    {
+      "id": "su-004",
+      "categoryId": "surgical",
+      "name": "Boiling Sterilizers",
+      "description": "Electric instrument boiling sterilizers in various capacities for quick sterilization of metal instruments.",
+      "image": "",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "su-005",
+      "categoryId": "surgical",
+      "name": "Kidney Trays — Stainless Steel",
+      "description": "Medical-grade stainless steel kidney trays in multiple sizes for instrument handling and clinical procedures.",
       "image": "",
       "featured": true,
       "order": 5
     },
     {
-      "id": "prod-006",
-      "categoryId": "laboratory",
-      "name": "Lab Equipment & Consumables",
-      "description": "Microscopes, reagents, test kits, and laboratory consumables.",
+      "id": "su-006",
+      "categoryId": "surgical",
+      "name": "Instrument & Catheter Trays",
+      "description": "Stainless steel instrument trays with and without covers, catheter trays, and procedure-specific tray sets.",
       "image": "",
       "featured": false,
       "order": 6
     },
     {
-      "id": "prod-007",
-      "categoryId": "protective",
-      "name": "PPE & Protective Gear",
-      "description": "Masks, gowns, face shields, and other personal protective equipment.",
+      "id": "su-007",
+      "categoryId": "surgical",
+      "name": "Dressing Drums",
+      "description": "Stainless steel dressing drums in various diameters for autoclaving and storing sterile surgical dressings.",
       "image": "",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "su-008",
+      "categoryId": "surgical",
+      "name": "Bed Pans & Gallipots",
+      "description": "Stainless steel and plastic bed pans, urinals, gallipots, and solution/washing bottles for ward use.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "su-009",
+      "categoryId": "surgical",
+      "name": "O.T. Lights",
+      "description": "Shadowless operating theatre lights — mobile floor-standing, ceiling-mounted, and wall-mounted LED configurations.",
+      "image": "assets/images/products/operating-room.jpg",
+      "featured": true,
+      "order": 9
+    },
+    {
+      "id": "su-010",
+      "categoryId": "surgical",
+      "name": "CSSD Equipment",
+      "description": "Central Sterile Supply Department equipment for instrument processing, sterilization, and sterile storage.",
+      "image": "",
+      "featured": false,
+      "order": 10
+    },
+    {
+      "id": "in-001",
+      "categoryId": "infant",
+      "name": "Infant Incubators",
+      "description": "Neonatal incubators with precise temperature and humidity control, servo-mode, and alarms for premature infant care.",
+      "image": "assets/images/products/incubator.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "in-002",
+      "categoryId": "infant",
+      "name": "Infant Radiant Warmers",
+      "description": "Overhead radiant warmers with servo-controlled heating, integrated resuscitation platform, and observation lights.",
+      "image": "assets/images/products/baby-care.jpg",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "in-003",
+      "categoryId": "infant",
+      "name": "Phototherapy Units",
+      "description": "LED and fluorescent phototherapy units for neonatal jaundice treatment. Single and double-surface configurations.",
+      "image": "",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "in-004",
+      "categoryId": "infant",
+      "name": "Neonatal Resuscitation Kits",
+      "description": "Complete neonatal resuscitation kits with infant resuscitators, masks, suction devices, and airways.",
+      "image": "",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "in-005",
+      "categoryId": "infant",
+      "name": "Infant Weighing Scales",
+      "description": "Digital and mechanical baby scales with high precision for accurate neonatal and infant weight monitoring.",
+      "image": "",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "id": "ds-001",
+      "categoryId": "disposables",
+      "name": "Examination & Surgical Gloves",
+      "description": "Latex, nitrile, and vinyl examination gloves. Sterile surgical gloves in all sizes. Powdered and powder-free options.",
+      "image": "assets/images/products/gloves.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "ds-002",
+      "categoryId": "disposables",
+      "name": "Disposable Syringes",
+      "description": "Single-use syringes from 1ml to 50ml with Luer lock and slip tips. Auto-disable safety syringes available.",
+      "image": "assets/images/products/syringe.jpg",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "ds-003",
+      "categoryId": "disposables",
+      "name": "IV Cannulas",
+      "description": "Intravenous cannulas in all gauge sizes (14G–24G) with safety mechanisms and wings for secure placement.",
+      "image": "",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "ds-004",
+      "categoryId": "disposables",
+      "name": "Surgical Sutures",
+      "description": "Absorbable and non-absorbable sutures — chromic catgut, polyglycolic acid, silk, nylon, and polypropylene in all sizes.",
+      "image": "",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "ds-005",
+      "categoryId": "disposables",
+      "name": "Foley Catheters",
+      "description": "Two-way and three-way Foley catheters in silicone and latex, all French sizes. Urine collection bags included.",
+      "image": "",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "id": "ds-006",
+      "categoryId": "disposables",
+      "name": "Hypodermic Needles & Surgical Blades",
+      "description": "Disposable hypodermic needles in all gauges and lengths. Carbon steel surgical blades for all scalpel handles.",
+      "image": "",
+      "featured": false,
+      "order": 6
+    },
+    {
+      "id": "ds-007",
+      "categoryId": "disposables",
+      "name": "Bandages & Gauze Dressings",
+      "description": "Roller bandages, gauze swabs, gauze dressings, crepe bandages, and elastic bandages in all standard sizes.",
+      "image": "assets/images/products/bandages.jpg",
       "featured": true,
       "order": 7
     },
     {
-      "id": "prod-008",
-      "categoryId": "furniture",
-      "name": "X-Ray Equipment",
-      "description": "X-ray machines and imaging equipment for diagnostic facilities.",
+      "id": "ds-008",
+      "categoryId": "disposables",
+      "name": "Cotton Wool & Cotton Rolls",
+      "description": "Absorbent cotton wool, cotton rolls, cotton balls, and non-absorbent cotton for clinical and surgical applications.",
       "image": "",
       "featured": false,
       "order": 8
+    },
+    {
+      "id": "ds-009",
+      "categoryId": "disposables",
+      "name": "Surgical Tapes & Plaster of Paris",
+      "description": "Adhesive surgical tapes, micropore tapes, zinc oxide plasters, and plaster of paris bandages for orthopedic casting.",
+      "image": "",
+      "featured": false,
+      "order": 9
+    },
+    {
+      "id": "ds-010",
+      "categoryId": "disposables",
+      "name": "Disposable Gowns, Masks & Drapes",
+      "description": "Non-woven surgical gowns, face masks (3-ply, N95), surgical drapes, shoe covers, and bouffant caps.",
+      "image": "",
+      "featured": true,
+      "order": 10
+    },
+    {
+      "id": "ds-011",
+      "categoryId": "disposables",
+      "name": "Hospital Linen & Scrubs",
+      "description": "Cotton scrub suits, nurse wear, bed sheets, pillow cases, patient gowns, and identification bands.",
+      "image": "",
+      "featured": false,
+      "order": 11
+    },
+    {
+      "id": "ds-012",
+      "categoryId": "disposables",
+      "name": "HIV Protection Kits & Goggles",
+      "description": "Complete HIV protection kits with goggles, face shields, gowns, and gloves for healthcare worker safety.",
+      "image": "",
+      "featured": false,
+      "order": 12
+    },
+    {
+      "id": "lb-001",
+      "categoryId": "laboratory",
+      "name": "Microscopes & Accessories",
+      "description": "Biological microscopes — monocular, binocular, and trinocular with LED illumination. Spare objectives and eyepieces available.",
+      "image": "assets/images/products/microscope.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "lb-002",
+      "categoryId": "laboratory",
+      "name": "Centrifuges",
+      "description": "Clinical and laboratory centrifuges — micro, table-top, and floor-standing models with variable speed control.",
+      "image": "",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "lb-003",
+      "categoryId": "laboratory",
+      "name": "Micropipettes",
+      "description": "Single-channel and multi-channel micropipettes with adjustable volume. Complete sets with calibration tools.",
+      "image": "",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "lb-004",
+      "categoryId": "laboratory",
+      "name": "Laboratory Water Baths",
+      "description": "Thermostatically controlled water baths for serological, biochemical, and microbiological testing procedures.",
+      "image": "assets/images/products/lab-equipment.jpg",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "lb-005",
+      "categoryId": "laboratory",
+      "name": "Laboratory Balances",
+      "description": "Analytical and precision balances for accurate weighing in laboratory and pharmaceutical applications.",
+      "image": "",
+      "featured": false,
+      "order": 5
+    },
+    {
+      "id": "lb-006",
+      "categoryId": "laboratory",
+      "name": "Laboratory Plasticware",
+      "description": "Beakers, graduated cylinders, test tubes, funnels, wash bottles, reagent bottles, and specimen containers.",
+      "image": "",
+      "featured": false,
+      "order": 6
+    },
+    {
+      "id": "lb-007",
+      "categoryId": "laboratory",
+      "name": "Muffle Furnaces & Ovens",
+      "description": "Laboratory muffle furnaces for ashing and high-temperature work. Electric ovens for drying and sterilization.",
+      "image": "",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "lb-008",
+      "categoryId": "laboratory",
+      "name": "Laboratory Incubators",
+      "description": "Bacteriological and BOD incubators with precise temperature control for microbiology and culture work.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "lb-009",
+      "categoryId": "laboratory",
+      "name": "Cold Chain Equipment",
+      "description": "Vaccine carriers, cold boxes, and ice packs for safe transport and storage of temperature-sensitive biologicals.",
+      "image": "",
+      "featured": true,
+      "order": 9
+    },
+    {
+      "id": "lb-010",
+      "categoryId": "laboratory",
+      "name": "Biology Models",
+      "description": "Anatomical teaching models — human skeleton, organ models, and biological education aids for medical training.",
+      "image": "",
+      "featured": false,
+      "order": 10
+    },
+    {
+      "id": "sp-001",
+      "categoryId": "specialty",
+      "name": "Wheelchairs",
+      "description": "Manual and powered wheelchairs with foldable frames, adjustable footrests, and removable armrests for patient mobility.",
+      "image": "assets/images/products/wheelchair.jpg",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "sp-002",
+      "categoryId": "specialty",
+      "name": "Patient Trolleys & Stretchers",
+      "description": "Emergency stretchers, patient transport trolleys, and recovery trolleys with adjustable height and side rails.",
+      "image": "",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "sp-003",
+      "categoryId": "specialty",
+      "name": "Dental Chairs — Programmable",
+      "description": "Fully programmable dental chairs with integrated delivery systems, LED operating lights, and assistant instrumentation.",
+      "image": "assets/images/products/dental-chair.jpg",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "sp-004",
+      "categoryId": "specialty",
+      "name": "Dental Equipment & Accessories",
+      "description": "Oil-free air compressors, ultrasound scalers, dental X-ray units, autoclave tables, and phantom head simulators.",
+      "image": "",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "sp-005",
+      "categoryId": "specialty",
+      "name": "Gynecological Examination Tables",
+      "description": "Dedicated gynecological examination tables with adjustable stirrups, trendelenburg position, and storage drawers.",
+      "image": "",
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": "sp-006",
+      "categoryId": "specialty",
+      "name": "Vacuum Extractors",
+      "description": "Manual and electric vacuum extractor sets for assisted vaginal delivery with multiple cup sizes.",
+      "image": "",
+      "featured": false,
+      "order": 6
+    },
+    {
+      "id": "sp-007",
+      "categoryId": "specialty",
+      "name": "Operating Tables",
+      "description": "Manual hydraulic and electro-mechanical operating tables with multi-position capabilities for all surgical disciplines.",
+      "image": "assets/images/products/operating-room.jpg",
+      "featured": true,
+      "order": 7
+    },
+    {
+      "id": "sp-008",
+      "categoryId": "specialty",
+      "name": "Height & Weight Scales",
+      "description": "Combined height and weight measuring stations — mechanical beam-type and digital electronic models for clinics.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    },
+    {
+      "id": "sp-009",
+      "categoryId": "specialty",
+      "name": "Medical Rubber Goods",
+      "description": "Air cushions, hot water bottles, ice caps, rubber tubes, tourniquets, elastic hosiery, and tracheostomy tubes.",
+      "image": "",
+      "featured": false,
+      "order": 9
+    },
+    {
+      "id": "sp-010",
+      "categoryId": "specialty",
+      "name": "Colposcopes & Breast Pumps",
+      "description": "Optical colposcopes for cervical examination and manual/electric breast pumps for maternal care.",
+      "image": "",
+      "featured": false,
+      "order": 10
     }
   ]
 }
