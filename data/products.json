@@ -1,0 +1,115 @@
+{
+  "lastUpdated": "2026-02-18T10:00:00Z",
+  "categories": [
+    {
+      "id": "pharmaceuticals",
+      "name": "Pharmaceuticals",
+      "description": "High-quality pharmaceutical products for healthcare facilities across East Africa.",
+      "icon": "fas fa-pills"
+    },
+    {
+      "id": "sundries",
+      "name": "Medical Sundries",
+      "description": "Essential medical sundries and disposable supplies for daily clinical use.",
+      "icon": "fas fa-first-aid"
+    },
+    {
+      "id": "consumables",
+      "name": "Medical Consumables",
+      "description": "Reliable medical consumables including catheters, tubes, and disinfectants.",
+      "icon": "fas fa-syringe"
+    },
+    {
+      "id": "furniture",
+      "name": "Medical Furniture",
+      "description": "Durable medical furniture and equipment for hospitals and clinics.",
+      "icon": "fas fa-bed"
+    },
+    {
+      "id": "laboratory",
+      "name": "Laboratory Equipment",
+      "description": "Laboratory equipment and consumables for diagnostic and research facilities.",
+      "icon": "fas fa-microscope"
+    },
+    {
+      "id": "protective",
+      "name": "Protective Equipment",
+      "description": "Personal protective equipment to keep healthcare workers safe.",
+      "icon": "fas fa-shield-alt"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-001",
+      "categoryId": "pharmaceuticals",
+      "name": "Pharmaceutical Supplies",
+      "description": "Wide range of pharmaceutical products sourced from certified manufacturers.",
+      "image": "",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "prod-002",
+      "categoryId": "sundries",
+      "name": "Medical Sundries",
+      "description": "Bandages, dressings, gloves, and other essential medical sundries.",
+      "image": "",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "prod-003",
+      "categoryId": "consumables",
+      "name": "Catheters & Tubes",
+      "description": "Medical-grade catheters and tubes for various clinical applications.",
+      "image": "",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "prod-004",
+      "categoryId": "consumables",
+      "name": "Disinfectants",
+      "description": "Hospital-grade disinfectants and sterilization solutions.",
+      "image": "",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "prod-005",
+      "categoryId": "furniture",
+      "name": "Hospital Beds & Furniture",
+      "description": "Durable hospital beds, examination tables, and medical furniture.",
+      "image": "",
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": "prod-006",
+      "categoryId": "laboratory",
+      "name": "Lab Equipment & Consumables",
+      "description": "Microscopes, reagents, test kits, and laboratory consumables.",
+      "image": "",
+      "featured": false,
+      "order": 6
+    },
+    {
+      "id": "prod-007",
+      "categoryId": "protective",
+      "name": "PPE & Protective Gear",
+      "description": "Masks, gowns, face shields, and other personal protective equipment.",
+      "image": "",
+      "featured": true,
+      "order": 7
+    },
+    {
+      "id": "prod-008",
+      "categoryId": "furniture",
+      "name": "X-Ray Equipment",
+      "description": "X-ray machines and imaging equipment for diagnostic facilities.",
+      "image": "",
+      "featured": false,
+      "order": 8
+    }
+  ]
+}

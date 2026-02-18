@@ -1,0 +1,31 @@
+{
+  "lastUpdated": "2026-02-18T10:00:00Z",
+  "hiringActive": true,
+  "jobs": [
+    {
+      "id": "job-001",
+      "title": "Medical Sales Representative",
+      "department": "Sales",
+      "type": "Full-time",
+      "location": "Kampala, Uganda",
+      "posted": "2026-02-01",
+      "deadline": "2026-03-15",
+      "description": "We are looking for an experienced Medical Sales Representative to join our growing team. The ideal candidate will have a strong background in pharmaceutical or medical supply sales across the East African market.",
+      "requirements": [
+        "Bachelor's degree in a relevant field (Pharmacy, Biomedical Sciences, or related)",
+        "Minimum 2 years experience in medical or pharmaceutical sales",
+        "Strong communication and interpersonal skills",
+        "Valid driving license",
+        "Willingness to travel across the region"
+      ],
+      "responsibilities": [
+        "Develop and maintain client relationships with healthcare facilities",
+        "Achieve monthly and quarterly sales targets",
+        "Provide product knowledge and consultative guidance to clients",
+        "Monitor market trends and competitor activities",
+        "Submit regular sales reports to management"
+      ],
+      "active": true
+    }
+  ]
+}

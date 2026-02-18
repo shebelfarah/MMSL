@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Maisha Medical Supplies Limited</title>
+  <meta name="description" content="Join our team at Maisha Medical Supplies Limited. View current job openings and career opportunities in the medical supply industry.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__contact">
+        <span><i class="fas fa-phone-alt"></i> +256 700 443 978</span>
+        <span><i class="fas fa-envelope"></i> info@maishamedicals.com</span>
+        <span><i class="fas fa-clock"></i> Mon - Sat: 8:00am - 6:00pm</span>
+      </div>
+      <div class="top-bar__social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        Maisha <span>Medical Supplies</span>
+      </a>
+      <nav>
+        <button class="nav__toggle" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About Us</a></li>
+          <li><a href="products.html" class="nav__link">Products</a></li>
+          <li><a href="careers.html" class="nav__link">Careers</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Careers</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+        <span>Careers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAREERS INTRO ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Join Our Team</h2>
+        <p>At Maisha Medical Supplies, we are always looking for talented individuals who share our passion for improving healthcare across East Africa.</p>
+      </div>
+
+      <!-- Hiring Banner (shown/hidden by careers.js) -->
+      <div class="hiring-banner fade-in" id="hiring-banner" style="display: none;">
+        <h3><i class="fas fa-briefcase"></i> We're Hiring!</h3>
+        <p>Browse our current openings below and apply today.</p>
+      </div>
+
+      <!-- Job Listings Container -->
+      <div id="jobs-container">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+
+      <!-- No Jobs Fallback -->
+      <div class="no-jobs" id="no-jobs" style="display: none;">
+        <i class="fas fa-inbox"></i>
+        <h3>No Current Openings</h3>
+        <p style="margin-bottom: 1.5rem;">We don't have any open positions right now, but we're always interested in hearing from talented professionals.</p>
+        <p>Send your CV to <a href="mailto:info@maishamedicals.com" style="color: var(--color-primary); font-weight: 600;">info@maishamedicals.com</a> and we'll keep it on file for future opportunities.</p>
+      </div>
+
+      <noscript>
+        <div class="section-header">
+          <p>Please enable JavaScript to view our job listings, or email info@maishamedicals.com for current openings.</p>
+        </div>
+      </noscript>
+    </div>
+  </section>
+
+  <!-- ===== WHY WORK WITH US ===== -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Why Work With Us</h2>
+        <p>Join a team that's making a difference in healthcare across East Africa.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card fade-in">
+          <div class="card__body" style="text-align: center; padding: 2rem;">
+            <div class="card__icon card__icon--primary" style="margin: 0 auto 1.5rem;">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="card__title">Growth Opportunities</h4>
+            <p class="card__text">We invest in our people with training, development, and clear career progression paths.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__body" style="text-align: center; padding: 2rem;">
+            <div class="card__icon card__icon--secondary" style="margin: 0 auto 1.5rem;">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h4 class="card__title">Meaningful Impact</h4>
+            <p class="card__text">Your work directly contributes to improving healthcare access and quality for communities.</p>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="card__body" style="text-align: center; padding: 2rem;">
+            <div class="card__icon card__icon--success" style="margin: 0 auto 1.5rem;">
+              <i class="fas fa-users"></i>
+            </div>
+            <h4 class="card__title">Great Team</h4>
+            <p class="card__text">Work alongside experienced professionals in a supportive and collaborative environment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT STRIP ===== -->
+  <section class="contact-strip">
+    <div class="container">
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-strip__text">
+          <strong>Call Us</strong>
+          <span>+256 700 443 978</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-strip__text">
+          <strong>Email Us</strong>
+          <span>info@maishamedicals.com</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-clock"></i></div>
+        <div class="contact-strip__text">
+          <strong>Working Hours</strong>
+          <span>Mon - Sat: 8am - 6pm</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-strip__text">
+          <strong>Visit Us</strong>
+          <span>Plot 111, Katalima Rd, Naguru</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__about">
+          <h4>Maisha Medical Supplies</h4>
+          <p>An ISO 9001:2015 certified company supplying high quality pharmaceutical and medical products across East Africa. Quality, Delivery, Value.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+            <li><a href="careers.html"><i class="fas fa-chevron-right"></i> Careers</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer__links">
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Medical Supplies</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Pharmaceutical Distribution</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Laboratory Equipment</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Protective Equipment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <div class="footer__contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Plot 111, Katalima Road, Naguru<br>P.O Box 27173, Kampala, Uganda</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+256 700 443 978<br>+256 772 977 798</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@maishamedicals.com</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Mon - Sat: 8:00am - 6:00pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Maisha Medical Supplies Limited. All Rights Reserved.</p>
+        <p>Quality Delivery with Value</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/careers.js"></script>
+</body>
+</html>

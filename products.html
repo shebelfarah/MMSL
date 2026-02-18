@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Maisha Medical Supplies Limited</title>
+  <meta name="description" content="Browse our comprehensive range of medical products — pharmaceuticals, sundries, consumables, medical furniture, laboratory equipment, and protective gear.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar__contact">
+        <span><i class="fas fa-phone-alt"></i> +256 700 443 978</span>
+        <span><i class="fas fa-envelope"></i> info@maishamedicals.com</span>
+        <span><i class="fas fa-clock"></i> Mon - Sat: 8:00am - 6:00pm</span>
+      </div>
+      <div class="top-bar__social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        Maisha <span>Medical Supplies</span>
+      </a>
+      <nav>
+        <button class="nav__toggle" aria-label="Toggle navigation">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About Us</a></li>
+          <li><a href="products.html" class="nav__link">Products</a></li>
+          <li><a href="careers.html" class="nav__link">Careers</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Products</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
+        <span>Products</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS INTRO ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Medical Products & Supplies</h2>
+        <p>We supply a comprehensive range of medical products to healthcare facilities across East Africa. Browse by category or view all products below.</p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="product-filters fade-in" id="product-filters">
+        <button class="filter-btn active" data-category="all">All Products</button>
+        <!-- Dynamically populated by products.js -->
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid--3" id="products-grid">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+
+      <!-- Fallback for no-JS -->
+      <noscript>
+        <div class="section-header">
+          <p>Please enable JavaScript to view our product catalog, or contact us at info@maishamedicals.com for a product list.</p>
+        </div>
+      </noscript>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="iso-banner fade-in">
+    <div class="container">
+      <div class="iso-banner__content">
+        <h3>Need a Custom Order?</h3>
+        <p>We can source specific medical products based on your facility's requirements. Get in touch with our sales team for personalized service.</p>
+      </div>
+      <a href="contact.html" class="btn btn--outline btn--lg">Contact Sales Team</a>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT STRIP ===== -->
+  <section class="contact-strip">
+    <div class="container">
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-strip__text">
+          <strong>Call Us</strong>
+          <span>+256 700 443 978</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-strip__text">
+          <strong>Email Us</strong>
+          <span>info@maishamedicals.com</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-clock"></i></div>
+        <div class="contact-strip__text">
+          <strong>Working Hours</strong>
+          <span>Mon - Sat: 8am - 6pm</span>
+        </div>
+      </div>
+      <div class="contact-strip__item fade-in">
+        <div class="contact-strip__icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-strip__text">
+          <strong>Visit Us</strong>
+          <span>Plot 111, Katalima Rd, Naguru</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__about">
+          <h4>Maisha Medical Supplies</h4>
+          <p>An ISO 9001:2015 certified company supplying high quality pharmaceutical and medical products across East Africa. Quality, Delivery, Value.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer__links">
+            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Products</a></li>
+            <li><a href="careers.html"><i class="fas fa-chevron-right"></i> Careers</a></li>
+            <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer__links">
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Medical Supplies</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Pharmaceutical Distribution</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Laboratory Equipment</a></li>
+            <li><a href="products.html"><i class="fas fa-chevron-right"></i> Protective Equipment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <div class="footer__contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Plot 111, Katalima Road, Naguru<br>P.O Box 27173, Kampala, Uganda</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+256 700 443 978<br>+256 772 977 798</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@maishamedicals.com</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Mon - Sat: 8:00am - 6:00pm</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Maisha Medical Supplies Limited. All Rights Reserved.</p>
+        <p>Quality Delivery with Value</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/products.js"></script>
+</body>
+</html>

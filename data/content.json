@@ -1,0 +1,37 @@
+{
+  "lastUpdated": "2026-02-18T10:00:00Z",
+  "hero": {
+    "headline": "Quality Medical Supplies Across East Africa",
+    "subheadline": "We supply a wide range of pharmaceuticals, medical sundries, consumables, and medical furniture across the East African region. Trusted by healthcare providers from Kampala to the Great Lakes.",
+    "ctaPrimary": { "text": "View Products", "url": "products.html" },
+    "ctaSecondary": { "text": "Contact Us", "url": "contact.html" }
+  },
+  "stats": [
+    { "value": "500+", "label": "Products Available" },
+    { "value": "10+", "label": "Years of Experience" },
+    { "value": "ISO 9001:2015", "label": "Certified" },
+    { "value": "East Africa", "label": "Region Covered" }
+  ],
+  "about": {
+    "mission": "To supply high quality pharmaceutical and medical products that exceed customer expectations through a quality management system satisfying the international standard ISO 9001:2015.",
+    "vision": "To be the leading medical supplies company in the East African region, recognized for quality, value, and timely delivery.",
+    "values": [
+      {
+        "title": "Quality",
+        "description": "Quality in all products and services we place in the market.",
+        "icon": "fas fa-award"
+      },
+      {
+        "title": "Delivery",
+        "description": "Delivery of the right type of products and services to the right place at the defined time frame.",
+        "icon": "fas fa-truck"
+      },
+      {
+        "title": "Value",
+        "description": "Value to all our stakeholders and return to shareholder value.",
+        "icon": "fas fa-handshake"
+      }
+    ]
+  },
+  "csr": "At Maisha Medical Supplies, corporate social responsibility remains an integral part of our commercial philosophy. Our business activities are focused on improving the health and wellbeing of the local communities we serve."
+}
