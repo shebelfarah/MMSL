@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T21:43:42.059Z",
+  "lastUpdated": "2026-02-18T21:45:11.520Z",
   "hero": {
     "headline": "Quality Medical Supplies Across East Africa",
     "subheadline": "We supply a wide range of pharmaceuticals, medical sundries, consumables, and medical furniture across the East African region. Trusted by healthcare providers from Kampala to the Great Lakes.",
@@ -28,6 +28,10 @@
     {
       "value": "East Africa",
       "label": "Region Covered"
+    },
+    {
+      "value": "test",
+      "label": "regulates"
     }
   ],
   "about": {
