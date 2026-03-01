@@ -3,6 +3,7 @@
   "hero": {
     "headline": "Quality Medical Supplies Across East Africa",
     "subheadline": "We supply a wide range of pharmaceuticals, medical sundries, consumables, and medical furniture across the East African region. Trusted by healthcare providers from Kampala to the Great Lakes.",
+    "backgroundImage": "assets/images/hero/hero-bg.jpg",
     "ctaPrimary": {
       "text": "View Products",
       "url": "products.html"
@@ -18,6 +19,7 @@
     { "value": "ISO 9001:2015", "label": "Certified" },
     { "value": "East Africa", "label": "Region Covered" }
   ],
+  "images": [],
   "about": {
     "mission": "To supply high quality pharmaceutical and medical products that exceed customer expectations through a quality management system satisfying the international standard ISO 9001:2015.",
     "vision": "To be the leading medical supplies company in the East African region, recognized for quality, value, and timely delivery.",

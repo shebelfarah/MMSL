@@ -75,13 +75,103 @@
     <!-- Admin Tabs -->
     <div class="admin-tabs">
       <div class="container">
-        <button class="admin-tab active" data-tab="products"><i class="fas fa-box"></i> Products</button>
+        <button class="admin-tab active" data-tab="homepage"><i class="fas fa-home"></i> Homepage</button>
+        <button class="admin-tab" data-tab="products"><i class="fas fa-box"></i> Products</button>
         <button class="admin-tab" data-tab="categories"><i class="fas fa-tags"></i> Categories</button>
       </div>
     </div>
 
+    <!-- Homepage Tab -->
+    <div id="tab-homepage" class="admin-content">
+      <div class="container">
+
+        <!-- Hero Section -->
+        <div class="admin-toolbar">
+          <div class="admin-toolbar__left">
+            <h2><i class="fas fa-image" style="color:var(--color-primary);margin-right:8px;"></i> Hero Section</h2>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="form-group">
+            <label for="hp-headline">Headline</label>
+            <input type="text" id="hp-headline" class="form-control" placeholder="Main headline text">
+          </div>
+          <div class="form-group">
+            <label for="hp-subtitle">Subheadline</label>
+            <textarea id="hp-subtitle" class="form-control" rows="3" placeholder="Supporting description text"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="hp-hero-image">Hero Background Image URL</label>
+            <input type="text" id="hp-hero-image" class="form-control" placeholder="assets/images/hero/hero-bg.jpg">
+            <div id="hp-hero-image-preview" class="admin-image-preview" style="display:none;margin-top:8px;">
+              <img id="hp-hero-image-preview-img" src="" alt="Hero preview">
+            </div>
+          </div>
+          <div class="admin-form-row" style="gap:16px;">
+            <div class="form-group" style="flex:1;">
+              <label for="hp-cta1-text">Primary Button Text</label>
+              <input type="text" id="hp-cta1-text" class="form-control" placeholder="View Products">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label for="hp-cta1-url">Primary Button URL</label>
+              <input type="text" id="hp-cta1-url" class="form-control" placeholder="products.html">
+            </div>
+          </div>
+          <div class="admin-form-row" style="gap:16px;">
+            <div class="form-group" style="flex:1;">
+              <label for="hp-cta2-text">Secondary Button Text</label>
+              <input type="text" id="hp-cta2-text" class="form-control" placeholder="Contact Us">
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label for="hp-cta2-url">Secondary Button URL</label>
+              <input type="text" id="hp-cta2-url" class="form-control" placeholder="contact.html">
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="admin-toolbar" style="margin-top:2rem;">
+          <div class="admin-toolbar__left">
+            <h2><i class="fas fa-chart-bar" style="color:var(--color-secondary);margin-right:8px;"></i> Stats Bar</h2>
+          </div>
+          <div class="admin-toolbar__right">
+            <button id="btn-add-stat" class="btn btn--secondary btn--sm">
+              <i class="fas fa-plus"></i> Add Stat
+            </button>
+          </div>
+        </div>
+        <div id="hp-stats-list" class="admin-card">
+          <!-- Stats rendered here -->
+        </div>
+
+        <!-- Homepage Images Section -->
+        <div class="admin-toolbar" style="margin-top:2rem;">
+          <div class="admin-toolbar__left">
+            <h2><i class="fas fa-images" style="color:var(--color-primary);margin-right:8px;"></i> Page Images</h2>
+            <small style="color:var(--color-mid-gray);margin-left:8px;">Add images to any section of the homepage</small>
+          </div>
+          <div class="admin-toolbar__right">
+            <button id="btn-add-image" class="btn btn--secondary btn--sm">
+              <i class="fas fa-plus"></i> Add Image
+            </button>
+          </div>
+        </div>
+        <div id="hp-images-list" class="admin-card">
+          <!-- Images rendered here -->
+        </div>
+
+        <!-- Save Button -->
+        <div style="margin-top:2rem;text-align:right;">
+          <button id="btn-save-homepage" class="btn btn--primary">
+            <i class="fas fa-save"></i> Save Homepage Changes
+          </button>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Products Tab -->
-    <div id="tab-products" class="admin-content">
+    <div id="tab-products" class="admin-content" style="display:none;">
       <div class="container">
         <div class="admin-toolbar">
           <div class="admin-toolbar__left">

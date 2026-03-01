@@ -8,13 +8,17 @@
 
   var ADMIN_PASS = 'maisha2026';
   var DATA_URL = 'data/products.json';
+  var CONTENT_URL = 'data/content.json';
   var STORAGE_KEY = 'mmsl_admin_data';
+  var CONTENT_STORAGE_KEY = 'mmsl_admin_content';
 
   var state = {
     categories: [],
     products: [],
     filterCategory: 'all'
   };
+
+  var homeState = null;
 
   // ---- DOM refs ----
   var loginGate = document.getElementById('login-gate');
@@ -92,6 +96,7 @@
   btnLogout.addEventListener('click', function () {
     localStorage.removeItem('mmsl_admin_auth');
     localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(CONTENT_STORAGE_KEY);
     loginGate.style.display = '';
     adminPanel.style.display = 'none';
     passwordInput.value = '';
@@ -101,6 +106,7 @@
     loginGate.style.display = 'none';
     adminPanel.style.display = '';
     loadData();
+    loadHomepageData();
   }
 
   // ============================================================
@@ -406,11 +412,14 @@
   // TABS
   // ============================================================
 
+  var tabHomepage = document.getElementById('tab-homepage');
+
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       tabs.forEach(function (t) { t.classList.remove('active'); });
       tab.classList.add('active');
       var target = tab.dataset.tab;
+      tabHomepage.style.display = target === 'homepage' ? '' : 'none';
       tabProducts.style.display = target === 'products' ? '' : 'none';
       tabCategories.style.display = target === 'categories' ? '' : 'none';
     });
@@ -451,6 +460,304 @@
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  });
+
+  // ============================================================
+  // HOMEPAGE EDITING
+  // ============================================================
+
+  var hpHeadline = document.getElementById('hp-headline');
+  var hpSubtitle = document.getElementById('hp-subtitle');
+  var hpHeroImage = document.getElementById('hp-hero-image');
+  var hpHeroImagePreview = document.getElementById('hp-hero-image-preview');
+  var hpHeroImagePreviewImg = document.getElementById('hp-hero-image-preview-img');
+  var hpCta1Text = document.getElementById('hp-cta1-text');
+  var hpCta1Url = document.getElementById('hp-cta1-url');
+  var hpCta2Text = document.getElementById('hp-cta2-text');
+  var hpCta2Url = document.getElementById('hp-cta2-url');
+  var hpStatsList = document.getElementById('hp-stats-list');
+  var hpImagesList = document.getElementById('hp-images-list');
+  var btnAddStat = document.getElementById('btn-add-stat');
+  var btnAddImage = document.getElementById('btn-add-image');
+  var btnSaveHomepage = document.getElementById('btn-save-homepage');
+
+  var IMAGE_POSITIONS = [
+    { value: 'after-hero', label: 'After Hero Section' },
+    { value: 'after-stats', label: 'After Stats Bar' },
+    { value: 'after-whatwedo', label: 'After What We Do' },
+    { value: 'after-iso', label: 'After ISO Banner' },
+    { value: 'after-values', label: 'After Our Values' },
+    { value: 'after-categories', label: 'After Product Categories' },
+    { value: 'after-csr', label: 'After CSR Section' }
+  ];
+
+  function loadHomepageData() {
+    var saved = localStorage.getItem(CONTENT_STORAGE_KEY);
+    if (saved) {
+      try {
+        homeState = JSON.parse(saved);
+        renderHomepageForm();
+        return;
+      } catch (e) { /* fall through */ }
+    }
+
+    fetch(CONTENT_URL + '?t=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        homeState = data;
+        if (!homeState.images) homeState.images = [];
+        if (!homeState.hero.backgroundImage) homeState.hero.backgroundImage = 'assets/images/hero/hero-bg.jpg';
+        saveHomepageToStorage();
+        renderHomepageForm();
+      })
+      .catch(function () {
+        hpStatsList.innerHTML = '<p style="color:var(--color-mid-gray);padding:1rem;">Failed to load homepage data.</p>';
+      });
+  }
+
+  function saveHomepageToStorage() {
+    localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(homeState));
+  }
+
+  function renderHomepageForm() {
+    if (!homeState) return;
+
+    // Hero fields
+    hpHeadline.value = homeState.hero.headline || '';
+    hpSubtitle.value = homeState.hero.subheadline || '';
+    hpHeroImage.value = homeState.hero.backgroundImage || '';
+    hpCta1Text.value = homeState.hero.ctaPrimary ? homeState.hero.ctaPrimary.text : '';
+    hpCta1Url.value = homeState.hero.ctaPrimary ? homeState.hero.ctaPrimary.url : '';
+    hpCta2Text.value = homeState.hero.ctaSecondary ? homeState.hero.ctaSecondary.text : '';
+    hpCta2Url.value = homeState.hero.ctaSecondary ? homeState.hero.ctaSecondary.url : '';
+    updateHeroImagePreview();
+
+    // Stats
+    renderStatsEditor();
+
+    // Images
+    renderImagesEditor();
+  }
+
+  function updateHeroImagePreview() {
+    var val = hpHeroImage.value.trim();
+    if (val) {
+      hpHeroImagePreviewImg.src = val;
+      hpHeroImagePreview.style.display = 'block';
+      hpHeroImagePreviewImg.onerror = function () { hpHeroImagePreview.style.display = 'none'; };
+    } else {
+      hpHeroImagePreview.style.display = 'none';
+    }
+  }
+
+  hpHeroImage.addEventListener('input', updateHeroImagePreview);
+
+  // --- Stats Editor ---
+  function renderStatsEditor() {
+    if (!homeState || !homeState.stats) return;
+
+    var html = '';
+    homeState.stats.forEach(function (stat, i) {
+      html += '<div class="hp-stat-row" data-index="' + i + '">' +
+        '<div class="admin-form-row" style="gap:12px;align-items:flex-end;">' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Value</label>' +
+        '<input type="text" class="form-control hp-stat-value" data-index="' + i + '" value="' + escHtml(stat.value) + '" placeholder="e.g. 500+">' +
+        '</div>' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Label</label>' +
+        '<input type="text" class="form-control hp-stat-label" data-index="' + i + '" value="' + escHtml(stat.label) + '" placeholder="e.g. Products Available">' +
+        '</div>' +
+        '<button type="button" class="btn btn--sm hp-stat-remove" data-index="' + i + '" style="background:#dc3545;color:#fff;margin-bottom:16px;padding:8px 12px;" title="Remove">' +
+        '<i class="fas fa-trash"></i>' +
+        '</button>' +
+        '</div></div>';
+    });
+
+    if (homeState.stats.length === 0) {
+      html = '<p style="color:var(--color-mid-gray);padding:0.5rem;">No stats. Click "Add Stat" to add one.</p>';
+    }
+
+    hpStatsList.innerHTML = html;
+
+    // Attach remove handlers
+    hpStatsList.querySelectorAll('.hp-stat-remove').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        homeState.stats.splice(parseInt(btn.dataset.index, 10), 1);
+        saveHomepageToStorage();
+        renderStatsEditor();
+      });
+    });
+
+    // Live update on input
+    hpStatsList.querySelectorAll('.hp-stat-value').forEach(function (input) {
+      input.addEventListener('input', function () {
+        homeState.stats[parseInt(input.dataset.index, 10)].value = input.value;
+      });
+    });
+    hpStatsList.querySelectorAll('.hp-stat-label').forEach(function (input) {
+      input.addEventListener('input', function () {
+        homeState.stats[parseInt(input.dataset.index, 10)].label = input.value;
+      });
+    });
+  }
+
+  btnAddStat.addEventListener('click', function () {
+    if (!homeState) return;
+    homeState.stats.push({ value: '', label: '' });
+    saveHomepageToStorage();
+    renderStatsEditor();
+    // Focus the new value input
+    var inputs = hpStatsList.querySelectorAll('.hp-stat-value');
+    if (inputs.length > 0) inputs[inputs.length - 1].focus();
+  });
+
+  // --- Images Editor ---
+  function renderImagesEditor() {
+    if (!homeState || !homeState.images) return;
+
+    var html = '';
+    homeState.images.forEach(function (img, i) {
+      var posLabel = IMAGE_POSITIONS.find(function (p) { return p.value === img.position; });
+      posLabel = posLabel ? posLabel.label : img.position;
+
+      // Position dropdown options
+      var posOpts = IMAGE_POSITIONS.map(function (p) {
+        return '<option value="' + p.value + '"' + (p.value === img.position ? ' selected' : '') + '>' + p.label + '</option>';
+      }).join('');
+
+      html += '<div class="hp-image-row" data-index="' + i + '">' +
+        '<div class="hp-image-row__preview">' +
+        (img.url ? '<img src="' + escHtml(img.url) + '" alt="' + escHtml(img.label || '') + '" onerror="this.style.display=\'none\'">' : '<div class="hp-image-placeholder"><i class="fas fa-image"></i></div>') +
+        '</div>' +
+        '<div class="hp-image-row__fields">' +
+        '<div class="form-group">' +
+        '<label>Image URL</label>' +
+        '<input type="text" class="form-control hp-img-url" data-index="' + i + '" value="' + escHtml(img.url || '') + '" placeholder="assets/images/...">' +
+        '</div>' +
+        '<div class="admin-form-row" style="gap:12px;">' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Label / Caption</label>' +
+        '<input type="text" class="form-control hp-img-label" data-index="' + i + '" value="' + escHtml(img.label || '') + '" placeholder="Optional caption">' +
+        '</div>' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Position on Page</label>' +
+        '<select class="form-control hp-img-position" data-index="' + i + '">' + posOpts + '</select>' +
+        '</div>' +
+        '</div>' +
+        '<div class="admin-form-row" style="gap:12px;">' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Width</label>' +
+        '<select class="form-control hp-img-width" data-index="' + i + '">' +
+        '<option value="full"' + (img.width === 'full' ? ' selected' : '') + '>Full Width</option>' +
+        '<option value="half"' + (img.width === 'half' ? ' selected' : '') + '>Half Width</option>' +
+        '<option value="third"' + (img.width === 'third' ? ' selected' : '') + '>One Third</option>' +
+        '</select>' +
+        '</div>' +
+        '<div class="form-group" style="flex:1;">' +
+        '<label>Link URL <small>(optional)</small></label>' +
+        '<input type="text" class="form-control hp-img-link" data-index="' + i + '" value="' + escHtml(img.link || '') + '" placeholder="e.g. products.html">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<button type="button" class="btn btn--sm hp-img-remove" data-index="' + i + '" style="background:#dc3545;color:#fff;align-self:flex-start;padding:8px 12px;" title="Remove">' +
+        '<i class="fas fa-trash"></i>' +
+        '</button>' +
+        '</div>';
+    });
+
+    if (homeState.images.length === 0) {
+      html = '<p style="color:var(--color-mid-gray);padding:0.5rem;">No images added. Click "Add Image" to place an image on the homepage.</p>';
+    }
+
+    hpImagesList.innerHTML = html;
+
+    // Attach remove handlers
+    hpImagesList.querySelectorAll('.hp-img-remove').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        homeState.images.splice(parseInt(btn.dataset.index, 10), 1);
+        saveHomepageToStorage();
+        renderImagesEditor();
+      });
+    });
+
+    // Live update on input
+    hpImagesList.querySelectorAll('.hp-img-url').forEach(function (input) {
+      input.addEventListener('input', function () {
+        homeState.images[parseInt(input.dataset.index, 10)].url = input.value;
+      });
+    });
+    hpImagesList.querySelectorAll('.hp-img-label').forEach(function (input) {
+      input.addEventListener('input', function () {
+        homeState.images[parseInt(input.dataset.index, 10)].label = input.value;
+      });
+    });
+    hpImagesList.querySelectorAll('.hp-img-position').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        homeState.images[parseInt(sel.dataset.index, 10)].position = sel.value;
+      });
+    });
+    hpImagesList.querySelectorAll('.hp-img-width').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        homeState.images[parseInt(sel.dataset.index, 10)].width = sel.value;
+      });
+    });
+    hpImagesList.querySelectorAll('.hp-img-link').forEach(function (input) {
+      input.addEventListener('input', function () {
+        homeState.images[parseInt(input.dataset.index, 10)].link = input.value;
+      });
+    });
+  }
+
+  btnAddImage.addEventListener('click', function () {
+    if (!homeState) return;
+    homeState.images.push({
+      url: '',
+      label: '',
+      position: 'after-hero',
+      width: 'full',
+      link: ''
+    });
+    saveHomepageToStorage();
+    renderImagesEditor();
+    // Focus the new URL input
+    var inputs = hpImagesList.querySelectorAll('.hp-img-url');
+    if (inputs.length > 0) inputs[inputs.length - 1].focus();
+  });
+
+  // --- Save Homepage ---
+  btnSaveHomepage.addEventListener('click', function () {
+    if (!homeState) return;
+
+    // Collect hero fields
+    homeState.hero.headline = hpHeadline.value.trim();
+    homeState.hero.subheadline = hpSubtitle.value.trim();
+    homeState.hero.backgroundImage = hpHeroImage.value.trim();
+    homeState.hero.ctaPrimary = { text: hpCta1Text.value.trim(), url: hpCta1Url.value.trim() };
+    homeState.hero.ctaSecondary = { text: hpCta2Text.value.trim(), url: hpCta2Url.value.trim() };
+    homeState.lastUpdated = new Date().toISOString();
+
+    saveHomepageToStorage();
+
+    // Download content.json
+    var json = JSON.stringify(homeState, null, 2);
+    var blob = new Blob([json + '\n'], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'content.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    // Show success feedback
+    btnSaveHomepage.innerHTML = '<i class="fas fa-check"></i> Saved! File Downloaded';
+    btnSaveHomepage.style.background = '#2E7D32';
+    setTimeout(function () {
+      btnSaveHomepage.innerHTML = '<i class="fas fa-save"></i> Save Homepage Changes';
+      btnSaveHomepage.style.background = '';
+    }, 3000);
   });
 
   // ============================================================

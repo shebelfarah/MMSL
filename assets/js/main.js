@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var subtitle = document.getElementById('hero-subtitle');
         var ctaPrimary = document.getElementById('hero-cta-primary');
         var ctaSecondary = document.getElementById('hero-cta-secondary');
+        var heroSection = document.querySelector('.hero');
 
         if (headline && data.hero) headline.textContent = data.hero.headline;
         if (subtitle && data.hero) subtitle.textContent = data.hero.subheadline;
@@ -92,6 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
           ctaSecondary.textContent = data.hero.ctaSecondary.text;
           ctaSecondary.href = data.hero.ctaSecondary.url;
         }
+        if (heroSection && data.hero && data.hero.backgroundImage) {
+          heroSection.style.backgroundImage = "url('" + data.hero.backgroundImage + "')";
+        }
 
         // Stats bar
         var statsBar = document.getElementById('stats-bar');
@@ -99,6 +103,64 @@ document.addEventListener('DOMContentLoaded', () => {
           statsBar.innerHTML = data.stats.map(function (stat) {
             return '<div class="stat"><div class="stat__value">' + stat.value + '</div><div class="stat__label">' + stat.label + '</div></div>';
           }).join('');
+        }
+
+        // Homepage images — insert at specified positions
+        if (data.images && data.images.length > 0) {
+          var positionMap = {
+            'after-hero': '.hero',
+            'after-stats': '.stats-bar',
+            'after-whatwedo': '#section-whatwedo',
+            'after-iso': '.iso-banner',
+            'after-values': '#section-values',
+            'after-categories': '#section-categories',
+            'after-csr': '#section-csr'
+          };
+
+          // Group images by position
+          var grouped = {};
+          data.images.forEach(function (img) {
+            if (!img.url) return;
+            if (!grouped[img.position]) grouped[img.position] = [];
+            grouped[img.position].push(img);
+          });
+
+          Object.keys(grouped).forEach(function (pos) {
+            var target = document.querySelector(positionMap[pos]);
+            if (!target) return;
+
+            var wrapper = document.createElement('section');
+            wrapper.className = 'hp-dynamic-images fade-in';
+
+            var container = document.createElement('div');
+            container.className = 'container';
+
+            var grid = document.createElement('div');
+            grid.className = 'hp-images-grid';
+
+            grouped[pos].forEach(function (img) {
+              var widthClass = img.width === 'half' ? 'hp-img--half' : img.width === 'third' ? 'hp-img--third' : 'hp-img--full';
+
+              var imgEl = document.createElement('div');
+              imgEl.className = 'hp-img-item ' + widthClass;
+
+              var inner = '';
+              if (img.link) {
+                inner = '<a href="' + img.link + '"><img src="' + img.url + '" alt="' + (img.label || '') + '"></a>';
+              } else {
+                inner = '<img src="' + img.url + '" alt="' + (img.label || '') + '">';
+              }
+              if (img.label) {
+                inner += '<p class="hp-img-caption">' + img.label + '</p>';
+              }
+              imgEl.innerHTML = inner;
+              grid.appendChild(imgEl);
+            });
+
+            container.appendChild(grid);
+            wrapper.appendChild(container);
+            target.parentNode.insertBefore(wrapper, target.nextSibling);
+          });
         }
       })
       .catch(function (err) {
